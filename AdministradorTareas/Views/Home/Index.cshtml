@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@foreach (var item in ViewBag.tareas)
+{
+<div class="card border-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header">@item.asignacion</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">@item.categoria</h5>
+    <p class="card-text">@item.tarea</p>
+  </div>
+</div>
+}

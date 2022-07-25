@@ -1,0 +1,71 @@
+﻿@model IEnumerable<AdministradorTareas.Models.tareas>
+@{
+    ViewData["Title"] = "Tareas";
+}
+
+<p>
+    <a asp-action="Create">Crear Nueva Tarea</a>
+</p>
+
+<p>
+    <a href="/tareas/Index?f=1">Activas</a> |
+    <a href="/tareas/Index?f=2">Terminadas</a> |
+    <a href="/tareas/Index?f=3">Canceladas</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tarea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.asignacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.creador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaLimite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.tareas)
+        {
+            <tr>
+                <td>
+                    @item.categoria
+                </td>
+                <td>
+                    @item.tarea
+                </td>
+                <td>
+                    @item.asignacion
+                </td>
+                <td>
+                    @item.creador
+                </td>
+                <td>
+                    @item.fechaLimite
+                </td>
+                <td>
+                    @item.estado
+                </td>
+                <td>
+                    @if (item.idas == ViewBag.id && ViewBag.filtro == 1)
+                    {
+                        <a asp-action="Terminar" asp-route-id="@item.ID">Terminar</a>
+                        <a asp-action="Cancelar" asp-route-id="@item.ID">Cancelar</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AdministradorTareas.Models.categorias>
+@{
+    ViewData["Title"] = "Categorias";
+}
+<p>
+    <a asp-action="Create">Crear Nueva Categoria</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Editar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
